@@ -1,20 +1,19 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Boton from './components/Boton';
-import Item from './components/Item';
 import List from './components/Lista';
 import Add from './components/Add';
 
 function App() {
   const [count, setCount] = useState(0);
-  const items = [
+  const [items, setItems] = useState([
     {id : 1, name: 'item1', price : 1}, 
     {id : 2, name: 'item2', price : 2}, 
     {id : 3, name: 'item3', price : 3}
-  ];
+  ]);
   const sum = () => {
     setCount(count + 1);
   }
@@ -23,10 +22,13 @@ function App() {
   }
   const add = (item) => {
     item.id = items.length + 1;
-    items.push(item);
+    setItems([...items, item]);
   }
-  const nombre = 'Luis Resendez';
-  const elemento = <h1>Hola, {nombre}</h1>;
+  const del = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  }
+  // const nombre = 'Luis Resendez';
+  // const elemento = <h1>Hola, {nombre}</h1>;
   return (
     <div>
       <Header />
@@ -36,7 +38,7 @@ function App() {
       <Boton name={"resta"} click={resta}/>
       <Boton name={"mensaje"} click={() => alert("hola")}/>
       <Add add={add} />
-      <List items={items} />
+      <List items={items} ondelete={del} />
       <Footer />
     </div>
   );
