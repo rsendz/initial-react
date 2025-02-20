@@ -1,14 +1,12 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-// import Boton from './components/Boton';
-import List from './components/Lista';
+import List from './pages/Lista';
 import Add from './components/Add';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ResponsiveAppBar from './components/AppBar';
-import CredentialsSignInPage from './components/Sign-in';
+//import CredentialsSignInPage from './components/Sign-in';
+import Login from './pages/Login';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -17,11 +15,12 @@ function App() {
     {id : 2, name: 'item2', price : 2}, 
     {id : 3, name: 'item3', price : 3}
   ]);
+  const [isLogged, setIsLogged] = useState(false);
   // const sum = () => {
   //   setCount(count + 1);
   // }
   // const resta = () => {
-  //   setCount(count - 1);
+  //   setCount(count - 1);s
   // }
   const add = (item) => {
     item.id = items.length + 1;
@@ -30,19 +29,26 @@ function App() {
   const del = (id) => {
     setItems(items.filter((item) => item.id !== id));
   }
-  // const nombre = 'Luis Resendez';
-  // const elemento = <h1>Hola, {nombre}</h1>;
+  const login = (user) => {
+    if(user.username === "luisito" && user.password === "craque123"){
+      setIsLogged(true);
+      return true;
+    }
+    return false;
+  }
+  const logout = () => {
+    setIsLogged(false);
+  }
   return (
     <div>
       <BrowserRouter>
-      <ResponsiveAppBar />
-        <Header />
+      {isLogged && <ResponsiveAppBar logout={logout} />}
         <Routes>
-          <Route path="/" element={<CredentialsSignInPage />} />
+          <Route path="/" element={<Login login={login} />} />
           <Route path="/add" element={<Add add={add} />} />
           <Route path="/items" element={<List items={items} ondelete={del} />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
       {/* {count}
       <Boton name={"suma"} 
