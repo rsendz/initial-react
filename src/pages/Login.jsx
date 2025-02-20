@@ -18,7 +18,7 @@ const Login = ({ login }) => {
         if(isLogged){
             setUsername("");
             setPassword("");
-            navigate("/items");
+            navigate("/home");
         } else {
             alert("Usuario o contraseña incorrectos");
         }

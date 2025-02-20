@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ResponsiveAppBar from './components/AppBar';
 //import CredentialsSignInPage from './components/Sign-in';
 import Login from './pages/Login';
+import HomePage from './pages/HomePage';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -44,6 +45,7 @@ function App() {
       <BrowserRouter>
       {isLogged && <ResponsiveAppBar logout={logout} />}
         <Routes>
+          <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Login login={login} />} />
           <Route path="/add" element={<Add add={add} />} />
           <Route path="/items" element={<List items={items} ondelete={del} />} />
