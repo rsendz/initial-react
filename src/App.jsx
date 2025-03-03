@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import List from './pages/Lista';
 import Add from './components/Add';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -11,12 +11,18 @@ import HomePage from './pages/HomePage';
 
 function App() {
   // const [count, setCount] = useState(0);
-  const [items, setItems] = useState([
-    {id : 1, name: 'item1', price : 1}, 
-    {id : 2, name: 'item2', price : 2}, 
-    {id : 3, name: 'item3', price : 3}
-  ]);
+  const [items, setItems] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    if(isLogged){
+      getItems();
+    }
+  }, [isLogged]);
+  const getItems = async () => {
+  const result = await fetch("http://localhost:4000/items/");
+  const data = await result.json();
+  setItems(data);
+}
   // const sum = () => {
   //   setCount(count + 1);
   // }
@@ -27,15 +33,23 @@ function App() {
     item.id = items.length + 1;
     setItems([...items, item]);
   }
-  const del = (id) => {
+  const del = async (id) => {
+    await fetch("http://localhost:4000/items/" + id, {
+      method: "DELETE",
+    });
     setItems(items.filter((item) => item.id !== id));
   }
-  const login = (user) => {
-    if(user.username === "luisito" && user.password === "craque123"){
-      setIsLogged(true);
-      return true;
-    }
-    return false;
+  const login = async (user) => {
+    const result = await fetch("http://localhost:4000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    const data = await result.json();
+    setIsLogged(data.isLogged);
+    return data.isLogged;
   }
   const logout = () => {
     setIsLogged(false);
