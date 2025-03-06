@@ -64,7 +64,7 @@ function ResponsiveAppBar({logout}) {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 650,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
