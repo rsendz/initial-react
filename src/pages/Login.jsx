@@ -8,13 +8,13 @@ const Login = ({ login }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const onsubmit = (e) => {
+    const onsubmit = async (e) => {
         e.preventDefault();
         if(!username || !password){
             alert("Faltan datos");
             return;
         }
-        const isLogged = login({username, password});
+        const isLogged = await login({username, password});
         if(isLogged){
             setUsername("");
             setPassword("");
