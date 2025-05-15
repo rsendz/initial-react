@@ -9,7 +9,7 @@ import ResponsiveAppBar from './components/AppBar';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 
-const API_URL = process.env.API_URL || "http://localhost:4000";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
 function App() {
   // const [count, setCount] = useState(0);
