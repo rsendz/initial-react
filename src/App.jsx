@@ -9,6 +9,8 @@ import ResponsiveAppBar from './components/AppBar';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 
+const API_URL = process.env.API_URL || "http://localhost:4000";
+
 function App() {
   // const [count, setCount] = useState(0);
   const [items, setItems] = useState([]);
@@ -22,7 +24,7 @@ function App() {
   }, [isLogin]);
 
   const getItems = async () => {
-  const result = await fetch("http://localhost:4000/items/", {
+  const result = await fetch(API_URL + "/items/", {
     headers: {
       "Authorization": `Bearer ${token}`
     }
@@ -41,7 +43,7 @@ function App() {
   const add = async (item) => {
     try {
       // Llamada a la API para agregar el item
-      const response = await fetch("http://localhost:4000/items/", {
+      const response = await fetch(API_URL + "/items/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +74,7 @@ function App() {
   }
   const del = async (id) => {
     console.log(id);
-    await fetch("http://localhost:4000/items/" + id, {
+    await fetch(API_URL + "/items/" + id, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`
@@ -81,7 +83,7 @@ function App() {
     setItems(items.filter((item) => item.id_item !== id));
   }
   const login = async (user) => {
-    const result = await fetch("http://localhost:4000/login", {
+    const result = await fetch(API_URL + "/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
