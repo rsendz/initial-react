@@ -1,12 +1,11 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import List from './pages/List';
+import Lista from './pages/Lista';
 import Add from './components/Add';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ResponsiveAppBar from './components/AppBar';
 import Login from './pages/Login';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import ConditionalRoute from './components/AuthedRoute';
 import ItemInfo from './components/ItemInfo';
 
@@ -74,11 +73,11 @@ const App = () => {
           <Route
             element={<ConditionalRoute condition={isLogin} redirectTo='/' />}
           >
-            <Route path='/home' element={<Home />} />
+            <Route path='/home' element={<HomePage />} />
             <Route path='/add' element={<Add addItem={addItem} />} />
             <Route
               path='/items'
-              element={<List items={items} ondelete={delItem} />}
+              element={<Lista items={items} ondelete={delItem} />}
             />
             <Route path='/items/:id' element={<ItemInfo items={items} />} />
           </Route>
