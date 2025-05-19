@@ -8,6 +8,7 @@ import ResponsiveAppBar from './components/AppBar';
 //import CredentialsSignInPage from './components/Sign-in';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
+import ItemInfo from './components/ItemInfo';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
@@ -83,7 +84,7 @@ function App() {
     setItems(items.filter((item) => item.id_item !== id));
   }
   const login = async (user) => {
-    const result = await fetch(API_URL + "/login", {
+    const result = await fetch(API_URL + "/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -107,6 +108,7 @@ function App() {
           <Route path="/" element={<Login login={login} />} />
           <Route path="/add" element={<Add add={add} />} />
           <Route path="/items" element={<List items={items} ondelete={del} />} />
+          <Route path="/items/:id" element={<ItemInfo />} /> 
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>
