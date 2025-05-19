@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const Item = ({item, ondelete}) => {
     return (
-        <tr>
-            <Link to={"/items/"+item.id_item + "?q=react55"}>
-                <td>{item.name}</td>
-            </Link>
-            <li>{item.price}</li>
-            <li>
-                <Boton click={() => ondelete(item.id_item)} name={"X"} />
-            </li>
-        </tr>
+    <tr>
+      <td>
+        <Link to={`/items/${item.id}?q=react55`}>{item.name}</Link>
+      </td>
+      <td>{item.price}</td>
+      <td>
+        <Boton name='X' click={() => ondelete(item.id)} />
+      </td>
+    </tr>
     );
 }
 

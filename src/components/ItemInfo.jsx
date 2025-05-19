@@ -1,20 +1,19 @@
-import React from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-export const ItemInfo = (items ) => {
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const [searchParams] = useSearchParams(); 
-    const item = items.find((i) => i.id === id);
-    return (
-        <div>
-            <h1>Item Info {id}</h1>
-            <h2>{item.name}</h2>
-            <h2>{item.price}</h2>
-            <h3>Search params {searchParams.get("")}</h3>
-            <button onClick={() => navigate(-1)}>go back</button>
-        </div>
-    );
-};
+export default function ItemInfo({ items }) {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { id } = useParams();
 
-export default ItemInfo;
+  const item = items.find((item) => item.id === id);
+
+  return (
+    <div>
+      <h1>Item info {id}</h1>
+      <h3>{item.name}</h3>
+      <p>{item.price}</p>
+      <h3>Search Param {searchParams.get('q')}</h3>
+      <button onClick={() => navigate(-1)}>Go back</button>
+    </div>
+  );
+}

@@ -6,14 +6,15 @@ const List = ({ items, ondelete }) => {
         <table>
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Delete?</td>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-            {items.map((i) => (
-                <Item key={i.id_item} item={i} ondelete={ondelete} />
-            ))}
+                {items.map((item) => (
+                <Item item={item} key={item.id} ondelete={ondelete} />
+                ))}
             </tbody>
         </table>
     );
