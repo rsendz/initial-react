@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { AppProvider } from '@toolpad/core/AppProvider';
-import { SignInPage } from '@toolpad/core/SignInPage';
-import { useTheme } from '@mui/material/styles';
+import * as React from "react";
+import { AppProvider } from "@toolpad/core/AppProvider";
+import { SignInPage } from "@toolpad/core/SignInPage";
+import { useTheme } from "@mui/material/styles";
 
-const providers = [{ id: 'credentials', name: 'Email and password' }];
+const providers = [{ id: "credentials", name: "Email and password" }];
 
 const signIn = async (provider, formData) => {
   const promise = new Promise((resolve) => {
     setTimeout(() => {
-      const email = formData?.get('email');
-      const password = formData?.get('password');
+      const email = formData?.get("email");
+      const password = formData?.get("password");
       alert(
-        `Signing in with "${provider.name}" and credentials: ${email}, ${password}`,
+        `Signing in with "${provider.name}" and credentials: ${email}, ${password}`
       );
       // preview-start
       resolve({
-        type: 'CredentialsSignin',
-        error: 'Invalid credentials.',
+        type: "CredentialsSignin",
+        error: "Invalid credentials.",
       });
       // preview-end
     }, 300);

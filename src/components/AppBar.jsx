@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Home', 'Inventario', 'Agregar Producto'];
+const pages = ['Home', 'Items', 'Add Item'];
 const settings = ['Logout'];
 
 function ResponsiveAppBar({logout}) {
