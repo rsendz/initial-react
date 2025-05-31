@@ -1,4 +1,3 @@
-// filepath: /Users/luisresendez/Code/React/initial-react/src/components/LifecycleDemo.jsx
 import React, { useEffect } from "react";
 
 const LifecycleDemo = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Boton from "./Boton";
+import Boton from "./Button";
 import { Link } from "react-router-dom";
 
 const Item = ({ item, ondelete }) => {

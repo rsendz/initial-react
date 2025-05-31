@@ -7,7 +7,7 @@ const Add = ({ add }) => {
   const [price, setPrice] = React.useState("");
   const onsubmit = (e) => {
     if (!name || !price) {
-      alert("Faltan datos");
+      alert("Missing data");
       return;
     }
     e.preventDefault();

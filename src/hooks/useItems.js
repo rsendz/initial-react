@@ -1,4 +1,3 @@
-// filepath: /src/hooks/useItems.js
 import { useState, useEffect, useCallback } from "react";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";

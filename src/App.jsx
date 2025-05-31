@@ -1,5 +1,5 @@
 import "./App.css";
-import Lista from "./pages/Lista";
+import Lista from "./pages/List";
 import Add from "./components/Add";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ResponsiveAppBar from "./components/AppBar";

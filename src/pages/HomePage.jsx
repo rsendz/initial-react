@@ -9,7 +9,7 @@ const HomePage = () => {
       <h1>Home Page</h1>
       <p>Welcome to the home page</p>
       <button onClick={() => setShowLifecycle(!showLifecycle)}>
-        {showLifecycle ? "Unmount" : "Mount"} LifecycleDemo
+        {showLifecycle ? "Unmount" : "Mount"} Component
       </button>
       {showLifecycle && <LifecycleDemo />}
     </div>

@@ -11,7 +11,7 @@ const Login = ({ login }) => {
   const onsubmit = async (e) => {
     e.preventDefault();
     if (!username || !password) {
-      alert("Faltan datos");
+      alert("Missing data");
       return;
     }
     const isLogged = await login({ username, password });
@@ -20,7 +20,7 @@ const Login = ({ login }) => {
       setPassword("");
       navigate("/home");
     } else {
-      alert("Usuario o contraseña incorrectos");
+      alert("Login failed. Please check your credentials.");
     }
   };
 
